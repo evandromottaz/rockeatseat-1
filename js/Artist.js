@@ -2,47 +2,39 @@ class Artist {
   constructor(arrow, container) {
     this.arrow = document.querySelector(arrow);
     this.container = document.querySelector(container);
+    this.containerHeight = window.getComputedStyle(this.container).height;
 
     this.init();
   }
 
+  clearPx() {
+    return parseInt(this.containerHeight.replace('px', ''));
+  }
+
   onLoad() {
-    this.handleClick();
-  }
-
-  sumImgsHeight() {
-    const cards = this.container.querySelectorAll('.card');
-    const gap = 40;
-    let totalHeight = 0;
-
-    cards.forEach((card) => (totalHeight += card.offsetHeight + gap));
-    return totalHeight;
-  }
-
-  hasActiveClass() {
-    return this.arrow.classList.contains('active') ? true : false;
+    this.container.style.height = this.clearPx() / 2 + 'px';
   }
 
   handleClick() {
-    this.arrow.classList.toggle('active');
-    if (this.hasActiveClass()) {
-      this.container.style.height = this.sumImgsHeight() / 2 + 'px';
+    const hasActiveClass = this.arrow.classList.contains('active');
+    if (hasActiveClass) {
+      this.arrow.classList.remove('active');
+      this.container.style.height = this.clearPx() / 2 + 'px';
+      this.arrow.innerText = 'Ver todos os artistas';
     } else {
-      this.container.style.height = this.sumImgsHeight() + 'px';
+      this.arrow.classList.add('active');
+      this.container.style.height = this.clearPx() + 'px';
+      this.arrow.innerText = 'Ver menos';
     }
   }
 
   addEvents() {
-    this.arrow.addEventListener('touchstart', this.handleClick);
-    this.arrow.addEventListener('click', this.handleClick);
-  }
-
-  bind() {
-    this.handleClick = this.handleClick.bind(this);
+    this.arrow.addEventListener('touchstart', () => this.handleClick());
+    this.arrow.addEventListener('click', () => this.handleClick());
   }
 
   init() {
-    this.bind();
+    this.onLoad();
     this.addEvents();
   }
 }

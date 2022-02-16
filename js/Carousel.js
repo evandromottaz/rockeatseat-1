@@ -2,26 +2,26 @@ export default class Carousel {
   constructor(gallery, wrapper) {
     this.gallery = document.querySelector(gallery);
     this.wrapper = document.querySelector(wrapper);
-    this.slide = { start: 0, movement: 0, end: 0 };
+    this.slide = { start: 0, movement: 0, end: 0, savedPosition: 0 };
   }
 
   imgSlidePosition(finalPosition) {
     const imgs = [...this.wrapper.children];
     const firstImg = imgs[0];
-    let wrapperFullWidth = 0;
+    let totalOffsetWidth = 0;
 
-    imgs.forEach((element) => {
+    imgs.forEach((img) => {
       const marginImg = +window
-        .getComputedStyle(element)
+        .getComputedStyle(img)
         .marginRight.replace('px', '');
 
-      wrapperFullWidth += element.offsetWidth + marginImg;
+      totalOffsetWidth += img.offsetWidth + marginImg;
     });
 
     if (finalPosition >= firstImg.offsetLeft) {
       finalPosition = 0;
-    } else if (finalPosition - this.wrapper.offsetWidth < -wrapperFullWidth) {
-      finalPosition = -wrapperFullWidth + this.wrapper.offsetWidth;
+    } else if (finalPosition - this.wrapper.offsetWidth < -totalOffsetWidth) {
+      finalPosition = -totalOffsetWidth + this.wrapper.offsetWidth;
     }
 
     this.moveSlide(finalPosition);

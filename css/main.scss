@@ -357,9 +357,9 @@ section.best-artist {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		gap: 111px 10px;
 		overflow: hidden;
 		transition: 1s ease;
+		gap: 111px 10px;
 
 		.card {
 			min-width: 335px;
@@ -415,6 +415,9 @@ section.best-artist {
 			position: absolute;
 			right: 0;
 			top: 0;
+			transition: 1s;
+			transform: rotate(147deg);
+			animation: arrow 1s infinite ease-in;
 		}
 	}
 }
@@ -766,12 +769,6 @@ footer {
 
 		p.bottom-text {
 			margin: 15px auto;
-
-			&::after {
-				transition: 1s;
-				transform: rotate(147deg);
-				animation: arrow 1s infinite ease-in;
-			}
 		}
 	}
 
@@ -854,6 +851,6 @@ footer {
 	margin: 40px auto;
 }
 
-.bottom-text.active::after {
-	transform: rotate(330deg) !important;
+.best-artist .bottom-text.active::after {
+	transform: rotate(330deg);
 }

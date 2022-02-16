@@ -432,10 +432,10 @@ section.best-artist .container {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 111px 10px;
   overflow: hidden;
   -webkit-transition: 1s ease;
   transition: 1s ease;
+  gap: 111px 10px;
 }
 
 section.best-artist .container .card {
@@ -504,6 +504,12 @@ section.best-artist .bottom-text::after {
   position: absolute;
   right: 0;
   top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform: rotate(147deg);
+          transform: rotate(147deg);
+  -webkit-animation: arrow 1s infinite ease-in;
+          animation: arrow 1s infinite ease-in;
 }
 
 footer {
@@ -855,14 +861,6 @@ footer section.social-medias-section .container .social-medias {
   section.best-artist p.bottom-text {
     margin: 15px auto;
   }
-  section.best-artist p.bottom-text::after {
-    -webkit-transition: 1s;
-    transition: 1s;
-    -webkit-transform: rotate(147deg);
-            transform: rotate(147deg);
-    -webkit-animation: arrow 1s infinite ease-in;
-            animation: arrow 1s infinite ease-in;
-  }
   footer a {
     font-size: 12px !important;
   }
@@ -955,8 +953,8 @@ footer section.social-medias-section .container .social-medias {
   margin: 40px auto;
 }
 
-.bottom-text.active::after {
-  -webkit-transform: rotate(330deg) !important;
-          transform: rotate(330deg) !important;
+.best-artist .bottom-text.active::after {
+  -webkit-transform: rotate(330deg);
+          transform: rotate(330deg);
 }
 /*# sourceMappingURL=main.css.map */
