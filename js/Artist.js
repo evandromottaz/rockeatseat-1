@@ -1,30 +1,49 @@
 class Artist {
-  constructor(arrow) {
-    this.arrow = arrow;
-    this.onTouch(this.arrow)
+  constructor(arrow, container) {
+    this.arrow = document.querySelector(arrow);
+    this.container = document.querySelector(container);
+
+    this.init();
   }
 
-  handleTouch(arrow) {
-    const containerArtists = arrow.previousElementSibling
-    if(containerArtists.getBoundingClientRect().height === 400) {
-      const artists = document.querySelectorAll('.best-artist .container .card')
-      let gap = 40
-      let i = 0
-      artists.forEach(artist => i += artist.getBoundingClientRect().height + gap);
-      containerArtists.style.height = `${i}px`;
-      arrow.innerText = 'Ver menos';
-      arrow.classList.add('active')
+  onLoad() {
+    this.handleClick();
+  }
+
+  sumImgsHeight() {
+    const cards = this.container.querySelectorAll('.card');
+    const gap = 40;
+    let totalHeight = 0;
+
+    cards.forEach((card) => (totalHeight += card.offsetHeight + gap));
+    return totalHeight;
+  }
+
+  hasActiveClass() {
+    return this.arrow.classList.contains('active') ? true : false;
+  }
+
+  handleClick() {
+    this.arrow.classList.toggle('active');
+    if (this.hasActiveClass()) {
+      this.container.style.height = this.sumImgsHeight() / 2 + 'px';
     } else {
-      containerArtists.style.height = '400px';
-      arrow.innerText = 'Ver todos os artistas';
-      arrow.classList.remove('active')
+      this.container.style.height = this.sumImgsHeight() + 'px';
     }
   }
 
-  onTouch(arrow) {
-    arrow.addEventListener('touchstart', ({target}) => {
-      this.handleTouch(target)
-    })
+  addEvents() {
+    this.arrow.addEventListener('touchstart', this.handleClick);
+    this.arrow.addEventListener('click', this.handleClick);
+  }
+
+  bind() {
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  init() {
+    this.bind();
+    this.addEvents();
   }
 }
 

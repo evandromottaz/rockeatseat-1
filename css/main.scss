@@ -358,6 +358,8 @@ section.best-artist {
 		justify-content: space-between;
 		flex-wrap: wrap;
 		gap: 111px 10px;
+		overflow: hidden;
+		transition: 1s ease;
 
 		.card {
 			min-width: 335px;
@@ -755,9 +757,6 @@ footer {
 
 	section.best-artist {
 		.container {
-			height: 400px;
-			overflow: hidden;
-			transition: 1s;
 			gap: 0;
 
 			.card {

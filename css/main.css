@@ -433,6 +433,9 @@ section.best-artist .container {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 111px 10px;
+  overflow: hidden;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
 }
 
 section.best-artist .container .card {
@@ -844,10 +847,6 @@ footer section.social-medias-section .container .social-medias {
     width: 100%;
   }
   section.best-artist .container {
-    height: 400px;
-    overflow: hidden;
-    -webkit-transition: 1s;
-    transition: 1s;
     gap: 0;
   }
   section.best-artist .container .card {
