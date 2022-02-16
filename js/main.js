@@ -1,8 +1,12 @@
 import Modal from './Modal.js';
-import Artist from './Artist.js'
+import Artist from './Artist.js';
+import Carousel from './Carousel.js';
 
-const modalElement = document.querySelector('[data-modal]')
-const arrowArtist = document.querySelector('.bottom-text')
+const modalElement = document.querySelector('[data-modal]');
+const arrowArtist = document.querySelector('.bottom-text');
 
-const modal = new Modal(modalElement)
-const artist = new Artist(arrowArtist)
+new Modal(modalElement);
+
+new Artist(arrowArtist);
+
+new Carousel('.gallery', '.wrapper').init();

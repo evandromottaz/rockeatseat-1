@@ -1,18 +1,8 @@
-body,
-header,
-figure,
-h1,
-h2,
-aside,
-button,
-nav,
-a,
-small,
-picture,
-img,
-p {
+* {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
@@ -30,8 +20,6 @@ body {
 
 body * {
   font-family: 'Montserrat', sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 html {
@@ -44,8 +32,6 @@ li {
 }
 
 .max-width {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
@@ -55,8 +41,6 @@ li {
   max-width: 1277px;
   margin-left: auto;
   margin-right: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   padding: 0 20px;
 }
 
@@ -82,7 +66,7 @@ li {
   overflow: hidden;
 }
 
-.bg header.container {
+.bg header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,11 +81,11 @@ li {
   position: relative;
 }
 
-.bg header.container .modal-container {
+.bg header .modal-container {
   display: none;
 }
 
-.bg header.container .modal-container .modal {
+.bg header .modal-container .modal {
   cursor: pointer;
   -webkit-transition: .3s;
   transition: .3s;
@@ -119,7 +103,7 @@ li {
   border-radius: 8px;
 }
 
-.bg header.container .modal-container .modal::after {
+.bg header .modal-container .modal::after {
   content: '';
   display: block;
   height: 3px;
@@ -129,7 +113,7 @@ li {
           box-shadow: 0 10px 0px #fff, 0 -10px 0px #fff;
 }
 
-.bg header.container .navigation {
+.bg header .navigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,7 +123,7 @@ li {
   width: 341px;
 }
 
-.bg header.container .navigation a {
+.bg header .navigation a {
   font-size: 18px;
   -webkit-transition: .3s;
   transition: .3s;
@@ -147,11 +131,11 @@ li {
   color: #fff;
 }
 
-.bg header.container .navigation a:hover {
+.bg header .navigation a:hover {
   color: #ff5b50;
 }
 
-.bg header.container .cta {
+.bg header .cta {
   color: #000;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -164,7 +148,7 @@ li {
   font-size: 16px;
 }
 
-.bg header.container .cta::before {
+.bg header .cta::before {
   content: '';
   display: block;
   background-image: url("../assets/logo_MetaMask.svg");
@@ -173,8 +157,8 @@ li {
   margin-right: 15px;
 }
 
-.bg main .container {
-  padding-top: 90px;
+.bg main > div {
+  margin-top: 90px;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -184,7 +168,7 @@ li {
       grid-template-areas: "subtitle title badge" "avatars title badge";
 }
 
-.bg main .container .subtitle {
+.bg main > div .subtitle {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: subtitle;
@@ -194,7 +178,7 @@ li {
   color: #fff;
 }
 
-.bg main .container .title {
+.bg main > div .title {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
@@ -203,14 +187,14 @@ li {
   font-weight: 700;
 }
 
-.bg main .container .badge {
+.bg main > div .badge {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 3;
   grid-area: badge;
 }
 
-.bg main .container .avatars {
+.bg main > div .avatars {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: avatars;
@@ -222,39 +206,38 @@ li {
           align-items: flex-end;
 }
 
-.bg main .container .avatars p {
+.bg main > div .avatars p {
   margin-left: 6px;
   color: #fff;
 }
 
-.bg main .container .avatars p strong {
+.bg main > div .avatars p strong {
   font-weight: 700;
 }
 
 .bg main picture.gallery {
-  padding-top: 90px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 0;
+  display: block;
+  margin-top: 90px;
       grid-template-areas: none;
+  overflow: hidden;
 }
 
 .bg main picture.gallery .wrapper {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  overflow: hidden;
 }
 
 .bg main picture.gallery .wrapper img {
   border: 1px solid #fff;
-  margin: 0 10px;
+  margin-right: 20px;
+  width: auto;
+}
+
+.bg main picture.gallery .wrapper img:last-child {
+  margin-right: 0;
 }
 
 section.numbers {
@@ -286,8 +269,6 @@ section.numbers .box-numbers {
           justify-content: center;
   height: 100%;
   padding: 0px 87px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border-right: 1px solid #5a5757;
 }
 
@@ -456,8 +437,6 @@ section.best-artist .container {
 
 section.best-artist .container .card {
   min-width: 335px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   padding: 25px 30px;
   background-color: #252525;
   display: -webkit-box;
@@ -683,7 +662,7 @@ footer section.social-medias-section .container .social-medias {
 }
 
 @media (max-width: 1000px) {
-  .bg header.container .navigation {
+  .bg header .navigation {
     display: none;
     z-index: 11;
     -webkit-box-orient: vertical;
@@ -695,19 +674,19 @@ footer section.social-medias-section .container .social-medias {
     left: 0;
     width: 100%;
   }
-  .bg header.container .navigation a {
+  .bg header .navigation a {
     padding: 20px;
     font-size: 30px;
     margin: 10px 0;
     width: 100%;
     text-align: center;
   }
-  .bg header.container .navigation a:hover {
+  .bg header .navigation a:hover {
     background-color: #ff5b50;
     color: #000;
     font-weight: 700;
   }
-  .bg header.container .modal-container {
+  .bg header .modal-container {
     z-index: 10;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -715,13 +694,13 @@ footer section.social-medias-section .container .social-medias {
     top: 0;
     left: 0;
   }
-  .bg main .container {
+  .bg main > div {
         grid-template-areas: "subtitle title" "avatars title";
   }
-  .bg main .container h1.title {
+  .bg main > div h1.title {
     font-size: 35px;
   }
-  .bg main .container .badge {
+  .bg main > div .badge {
     display: none;
   }
   section.numbers {
@@ -795,29 +774,29 @@ footer section.social-medias-section .container .social-medias {
   .title {
     font-size: 22px !important;
   }
-  .bg header.container {
+  .bg header {
     padding-top: 20px;
   }
-  .bg header.container .logo h1 {
+  .bg header .logo h1 {
     font-size: 30px;
   }
-  .bg header.container button.cta {
+  .bg header button.cta {
     display: none;
   }
-  .bg main .container {
+  .bg main > div {
         grid-template-areas: "title" "subtitle";
   }
-  .bg main .container .title {
+  .bg main > div .title {
     text-align: center;
   }
-  .bg main .container .subtitle {
+  .bg main > div .subtitle {
     text-align: center;
     margin: 0 auto;
   }
-  .bg main .container .subtitle br {
+  .bg main > div .subtitle br {
     display: none;
   }
-  .bg main .container .avatars {
+  .bg main > div .avatars {
     display: none;
   }
   section.numbers {
