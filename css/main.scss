@@ -196,6 +196,7 @@ li {
 				position: relative;
 				left: 0;
 				display: flex;
+				// overflow-y: auto;
 
 				img {
 					border: 1px solid $text-color;
@@ -355,7 +356,7 @@ section.best-artist {
 
 	.container {
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		flex-wrap: wrap;
 		overflow: hidden;
 		transition: 1s ease;

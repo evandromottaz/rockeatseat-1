@@ -34,8 +34,18 @@ export default class Carousel {
 
   onStart(event) {
     event.preventDefault();
-    this.slide.start = event.clientX;
-    this.gallery.addEventListener('mousemove', this.onMove);
+
+    let move = { type: '', clientX: 0 };
+    if (event.type === 'mousedown') {
+      move.clientX = event.clientX;
+      move.type = 'mousemove';
+    } else {
+      move.clientX = event.changedTouches[0].clientX;
+      move.type = 'touchmove';
+    }
+
+    this.slide.start = move.clientX;
+    this.gallery.addEventListener(move.type, this.onMove);
   }
 
   updatePosition(clientX) {
@@ -44,7 +54,14 @@ export default class Carousel {
   }
 
   onMove(event) {
-    const finalPosition = this.updatePosition(event.clientX);
+    let clientX;
+    if (event.type === 'mousemove') {
+      clientX = event.clientX;
+    } else {
+      clientX = event.changedTouches[0].clientX;
+    }
+    const finalPosition = this.updatePosition(clientX);
+    console.log(event);
     this.imgSlidePosition(finalPosition);
   }
 
@@ -56,6 +73,8 @@ export default class Carousel {
   addEvents() {
     this.gallery.addEventListener('mousedown', this.onStart);
     this.gallery.addEventListener('mouseup', this.onEnd);
+    this.gallery.addEventListener('touchstart', this.onStart);
+    this.gallery.addEventListener('touchend', this.onEnd);
   }
 
   bind() {
